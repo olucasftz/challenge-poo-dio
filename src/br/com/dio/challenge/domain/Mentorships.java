@@ -29,14 +29,9 @@ import java.time.format.DateTimeFormatter;
 
         @Override
         public String toString() {
-            return "Mentorship [ "
-                    + "Title: "
-                    + getTitle()
-                    + "Description: "
-                    + getDescription()
-                    + "mentoringDate: "
-                    + getDateFormatted() +
-                    " ]";
+            return "\n" + "Title: \n" + getTitle() + "+\n"
+                    + "Description: " + getDescription() + "\n"
+                    + "mentoringDate: " + getDateFormatted() + "\n";
         }
     }
 
