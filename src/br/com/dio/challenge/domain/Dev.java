@@ -49,14 +49,23 @@ public class Dev {
     }
 
     public void enterBootcamp(Bootcamp bootcamp) {
-
+        this.getEnteredContents().addAll(bootcamp.getContents());
+        bootcamp.getDevsRegistered().add(this);
     }
 
     public void progress() {
-
+        Optional<Content> content = this.enteredContents.stream().findFirst();
+        if (content.isPresent()) {
+            this.completedContents.add(content.get());
+            this.enteredContents.remove(content.get());
+        } else {
+            System.err.println("You are not registered in any content!");
+        }
     }
 
     public double xpTotalCalculate() {
-        return 0;
+        return this.completedContents.stream()
+                .mapToDouble(Content::xpCalculate)
+                .sum();
     }
 }
